@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -19,10 +20,10 @@ use Illuminate\Support\Facades\Route;
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 
-// Route::post('/products', [ProductController::class, 'store']);
+Route::resource('category', CategoryController::class);
 // Route::get('/products/{id}', [ProductController::class, 'show']);
 
-Route::group(['middleware' =>['auth:sanctum']], function () {
+Route::group(['middleware' => ['auth:sanctum']], function () {
     // use below codes for simple api routes
     Route::resource('products', ProductController::class);
     Route::get('/products/search/{name}', [ProductController::class, 'search']);
