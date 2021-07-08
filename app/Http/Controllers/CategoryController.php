@@ -14,7 +14,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        return Category::all();
     }
 
     /**
@@ -35,7 +35,11 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required'
+        ]);
+
+        return Category::create($request->all());
     }
 
     /**
@@ -44,9 +48,9 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show($id)
     {
-        //
+        return Category::find($id);
     }
 
     /**
@@ -67,9 +71,17 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, $id)
     {
-        //
+        // $request->validate([
+        //     'name' => 'required',
+        //     'slug' => 'required',
+        //     'price' => 'required'
+        // ]);
+
+        $category = Category::find($id);
+        $category->update($request->all());
+        return $category;
     }
 
     /**
