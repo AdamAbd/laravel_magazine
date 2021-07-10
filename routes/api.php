@@ -21,7 +21,9 @@ use Illuminate\Support\Facades\Route;
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 
-Route::resource('category', CategoryController::class);
+Route::apiResource('category', CategoryController::class)->only(['index']);
+Route::get('/category/search', [CategoryController::class, 'search']);
+
 Route::resource('magazine', MagazineController::class);
 // Route::get('/products/{id}', [ProductController::class, 'show']);
 

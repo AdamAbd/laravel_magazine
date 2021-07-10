@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -94,5 +95,15 @@ class CategoryController extends Controller
     {
         $product = Category::destroy($id);
         return $product;
+    }
+
+    public function search(Request $request)
+    {
+        $name = $request->input('name');
+
+        $category = Category::query();
+        $category->where('name', 'like', '%' . $name . '%');
+
+        return $category->take(1)->get();
     }
 }
