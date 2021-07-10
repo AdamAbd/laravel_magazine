@@ -1,7 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API\v1;
 
+use App\Http\Controllers\Controller;
+use App\Http\Resources\API\v1\MagazineResource;
 use App\Models\Magazine;
 use Illuminate\Http\Request;
 
@@ -14,7 +16,8 @@ class MagazineController extends Controller
      */
     public function index()
     {
-        return Magazine::all();
+        // return Magazine::all();
+        return MagazineResource::collection(Magazine::all());
     }
 
     /**
