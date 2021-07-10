@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\API\v1\CategoryController;
 use App\Http\Controllers\MagazineController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Http\Request;
