@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API\v1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\API\v1\CategoryResource;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
@@ -74,9 +75,9 @@ class CategoryController extends Controller
     {
         $name = $request->input('name');
 
-        $category = Category::query();
-        $category->where('name', 'like', '%' . $name . '%');
+        $category = Category::query()
+            ->where('name', 'like', '%' . $name . '%')->first();
 
-        return $category->take(1)->get();
+        return new CategoryResource($category);
     }
 }
