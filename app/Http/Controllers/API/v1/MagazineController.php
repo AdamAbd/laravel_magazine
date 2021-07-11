@@ -16,7 +16,6 @@ class MagazineController extends Controller
      */
     public function index()
     {
-        // return Magazine::all();
         return MagazineResource::collection(Magazine::all());
     }
 
@@ -29,7 +28,7 @@ class MagazineController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title' => 'required',
+            'title' => ['required', 'string', 'max:255'],
             'picture' => 'required',
             'preview_link' => 'required',
             'category' => 'required',
@@ -48,9 +47,9 @@ class MagazineController extends Controller
      * @param  \App\Models\Magazine  $magazine
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Magazine $magazine)
     {
-        return Magazine::find($id);
+        return $magazine;
     }
 
     /**
