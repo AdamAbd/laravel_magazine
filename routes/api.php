@@ -23,6 +23,7 @@ Route::post('/login', [AuthController::class, 'login']);
 
 Route::get('category', [CategoryController::class, 'index']);
 // Route::get('/category/{id}', [CategoryController::class, 'show']);
+Route::delete('/category/{id}', [CategoryController::class, 'destroy']);
 Route::get('/category/search', [CategoryController::class, 'search']);
 
 Route::resource('magazine', MagazineController::class);

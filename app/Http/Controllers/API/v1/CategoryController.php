@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API\v1;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\API\v1\CategoryResource;
 use App\Models\Category;
+use App\Models\CategoryMagazine;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -42,7 +43,7 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        return Category::find($id)->with('magazine')->first();
+        return Category::find($id)->with('magazinee')->first();
     }
 
     /**
@@ -67,7 +68,7 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        $product = Category::destroy($id);
+        $product = CategoryMagazine::destroy($id);
         return $product;
     }
 

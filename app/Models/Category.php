@@ -19,8 +19,13 @@ class Category extends Model
         'picture'
     ];
 
+    // public function magazine()
+    // {
+    //     return $this->hasMany(Magazine::class, 'category', 'name');
+    // }
+
     public function magazine()
     {
-        return $this->hasMany(Magazine::class, 'category', 'name');
+        return $this->belongsToMany(Magazine::class);
     }
 }
