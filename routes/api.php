@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\API\v1\CategoryController;
-use App\Http\Controllers\MagazineController;
+use App\Http\Controllers\API\v1\MagazineController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -21,7 +21,8 @@ use Illuminate\Support\Facades\Route;
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 
-Route::apiResource('category', CategoryController::class)->only(['index']);
+Route::get('category', [CategoryController::class, 'index']);
+// Route::get('/category/{id}', [CategoryController::class, 'show']);
 Route::get('/category/search', [CategoryController::class, 'search']);
 
 Route::resource('magazine', MagazineController::class);

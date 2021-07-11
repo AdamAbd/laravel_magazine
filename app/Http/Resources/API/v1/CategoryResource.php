@@ -19,6 +19,7 @@ class CategoryResource extends JsonResource
             'attributes' => [
                 'name' => $this->name,
                 'picture' => $this->picture,
+                'magazine' => MagazineResource::collection($this->magazine),
                 'created_at' => $this->created_at,
                 'updated_at' => $this->updated_at
             ]

@@ -42,7 +42,7 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        return Category::find($id);
+        return Category::find($id)->with('magazine')->first();
     }
 
     /**
@@ -76,7 +76,9 @@ class CategoryController extends Controller
         $name = $request->input('name');
 
         $category = Category::query()
-            ->where('name', 'like', '%' . $name . '%')->first();
+            ->where('name', 'like', '%' . $name . '%')
+            ->with('magazine')
+            ->first();
 
         return new CategoryResource($category);
     }
